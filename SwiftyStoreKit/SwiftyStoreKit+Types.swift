@@ -33,6 +33,13 @@ public struct Purchase {
     public let transaction: PaymentTransaction
     public let originalTransaction: PaymentTransaction?
     public let needsFinishTransaction: Bool
+    public init(productId: String, quantity: Int, transaction: PaymentTransaction, originalTransaction: PaymentTransaction?, needsFinishTransaction: Bool) {
+        self.productId = productId
+        self.quantity = quantity
+        self.transaction = transaction
+        self.originalTransaction = originalTransaction
+        self.needsFinishTransaction = needsFinishTransaction
+    }
 }
 
 // Purchased product
@@ -76,6 +83,11 @@ public struct RetrieveResults {
     public let retrievedProducts: Set<SKProduct>
     public let invalidProductIDs: Set<String>
     public let error: Error?
+    public init(retrievedProducts: Set<SKProduct>, invalidProductIDs: Set<String>, error: Error?) {
+        self.retrievedProducts = retrievedProducts
+        self.invalidProductIDs = invalidProductIDs
+        self.error = error
+    }
 }
 
 // Purchase result
@@ -88,6 +100,10 @@ public enum PurchaseResult {
 public struct RestoreResults {
     public let restoredPurchases: [Purchase]
     public let restoreFailedPurchases: [(SKError, String?)]
+    public init(restoredPurchases: [Purchase], restoreFailedPurchases: [(SKError, String?)]) {
+        self.restoredPurchases = restoredPurchases
+        self.restoreFailedPurchases = restoreFailedPurchases
+    }
 }
 
 public typealias ShouldAddStorePaymentHandler = (_ payment: SKPayment, _ product: SKProduct) -> Bool
