@@ -43,6 +43,16 @@ public struct PurchaseDetails {
     public let transaction: PaymentTransaction
     public let originalTransaction: PaymentTransaction?
     public let needsFinishTransaction: Bool
+    
+    // Make public for unit tests
+    public init(productId: String, quantity: Int, product: SKProduct, transaction: PaymentTransaction, originalTransaction: PaymentTransaction?, needsFinishTransaction: Bool) {
+        self.productId = productId
+        self.quantity = quantity
+        self.product = product
+        self.transaction = transaction
+        self.originalTransaction = originalTransaction
+        self.needsFinishTransaction = needsFinishTransaction
+    }
 }
 
 //Conform to this protocol to provide custom receipt validator
